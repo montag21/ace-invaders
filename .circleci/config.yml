@@ -35,6 +35,8 @@ jobs:
           command: |
               mkdir -p web
               ./godot -v --export "HTML5" project.godot "web/index.html"
+              zip -r web.zip web
       - run:
           name: Upload Web build
-          command: ./butler push web yakovko/ace-invaders:web
+          command: ./butler push web.zip yakovko/ace-invaders:web
+
