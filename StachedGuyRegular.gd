@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var speed = 100
+var speed = 50
 var gravity = 800
 const JUMP_FORCE = 300
 var velocity = Vector2()
@@ -27,3 +27,6 @@ func _physics_process(delta):
 		velocity.y -= JUMP_FORCE
 #		
 	velocity = move_and_slide(velocity, Vector2.UP)
+
+func take_damage():
+	queue_free()
