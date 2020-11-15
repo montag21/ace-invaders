@@ -93,12 +93,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-current = true
-editor_draw_limits = true
-editor_draw_drag_margin = true
-
 [node name="Restart" type="Button" parent="Controls"]
 margin_left = 184.0
 margin_top = 1056.0
@@ -110,6 +104,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
 [connection signal="gui_input" from="UnclickableArea" to="." method="_on_Control_gui_input"]
 [connection signal="pressed" from="Controls/ExitGame" to="." method="_on_ExitGame_pressed"]
 [connection signal="pressed" from="Controls/Restart" to="." method="_on_Restart_pressed"]

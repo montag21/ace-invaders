@@ -19,6 +19,7 @@ var target
 onready var turret_head = get_node("Head")
 
 func _ready():
+	turret_head.rotation = MIN_ANGLE
 	setstate(State.SCAN)
 	
 func setstate(new_state):
