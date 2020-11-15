@@ -27,3 +27,6 @@ func _physics_process(delta):
 		velocity.y -= JUMP_FORCE
 #		
 	velocity = move_and_slide(velocity, Vector2.UP)
+
+func take_damage():
+	queue_free()
