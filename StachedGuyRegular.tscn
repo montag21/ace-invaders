@@ -8,6 +8,7 @@ extents = Vector2( 8, 8 )
 
 [node name="StachedGuyRegular" type="KinematicBody2D"]
 collision_layer = 8
+collision/safe_margin = 1.5
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
