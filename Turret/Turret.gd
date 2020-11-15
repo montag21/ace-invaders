@@ -17,7 +17,6 @@ var state
 var target
 
 onready var turret_head = get_node("Head")
-onready var info = get_node("Info")
 
 func _ready():
 	setstate(State.SCAN)
@@ -63,7 +62,10 @@ func get_angle_to_target():
 	if vector_towards_target.x <= 0:
 		return base_angle
 	else:
-		return 2*PI + base_angle
+		if vector_towards_target.y > 0:
+			return 2*PI + base_angle
+		else:
+			return base_angle
 	
 func has_valid_target():
 	if target == null:
