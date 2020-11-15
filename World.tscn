@@ -36,7 +36,7 @@ centered = false
 [node name="Land" parent="Background" instance=ExtResource( 3 )]
 
 [node name="Castle" parent="Background" instance=ExtResource( 4 )]
-position = Vector2( 512, 623.653 )
+position = Vector2( 512, 624 )
 
 [node name="TurretLeft" parent="Background/Castle" instance=ExtResource( 8 )]
 position = Vector2( -176, 48 )
