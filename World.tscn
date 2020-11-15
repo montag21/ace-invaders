@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Pause.gd" type="Script" id=2]
 [ext_resource path="res://Land.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Castle.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Turret/Bullet/Bullet.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Restart.gd" type="Script" id=6]
 [ext_resource path="res://backdrop.png" type="Texture" id=7]
 [ext_resource path="res://Turret/Turret.tscn" type="PackedScene" id=8]
@@ -46,9 +45,6 @@ position = Vector2( -176, 48 )
 position = Vector2( 176, 48 )
 MIN_ANGLE = 2.0
 MAX_ANGLE = 3.3
-
-[node name="Bullet" parent="Background" instance=ExtResource( 5 )]
-position = Vector2( 770.286, 481.031 )
 
 [node name="Fun" type="CanvasLayer" parent="."]
 

@@ -1,6 +1,6 @@
 extends Node2D
 
-const SPEED = 200
+const SPEED = 250
 export var direction = Vector2(-1, 0) * SPEED
 
 onready var body = get_node("KinematicBody2D")
@@ -14,7 +14,10 @@ func _on_screen_exited():
 	queue_free()
 
 func _physics_process(delta):
-	var _collision = body.move_and_collide(direction * delta)
+	var collision = body.move_and_collide(direction * delta)
+	if collision != null: 
+		queue_free()
+	
 
 func set_direction(dir: Vector2):
 	direction = dir * SPEED

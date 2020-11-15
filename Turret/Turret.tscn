@@ -8,6 +8,7 @@
 extents = Vector2( 10.7611, 12.7623 )
 
 [node name="Turret" type="StaticBody2D"]
+collision_layer = 2
 script = ExtResource( 3 )
 
 [node name="Head" type="Sprite" parent="."]
