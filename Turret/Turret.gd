@@ -23,9 +23,6 @@ func _ready():
 	
 func setstate(new_state):
 	state = new_state
-	match new_state:
-		State.SCAN:
-			turret_head.rotation = clamp(turret_head.rotation, MIN_ANGLE, MAX_ANGLE)
 
 func _physics_process(delta):
 	match state:
@@ -35,7 +32,7 @@ func _physics_process(delta):
 			shoot(delta)
 			update_attack_position(delta)
 
-func update_scan_rotation():
+func update_scan_direction():
 	if turret_head.rotation >= MAX_ANGLE:
 		rotation_direction = -1
 	elif turret_head.rotation <= MIN_ANGLE:
@@ -43,7 +40,7 @@ func update_scan_rotation():
 
 func update_scan_position(delta):
 	turret_head.rotate(rotation_direction * ROTATION_SPEED * delta)
-	update_scan_rotation()
+	update_scan_direction()
 	raycast()
 	
 	
@@ -58,13 +55,9 @@ func raycast():
 func get_angle_to_target():
 	var vector_towards_target = target.global_position - turret_head.global_position
 	var base_angle = atan2(-vector_towards_target.y, -vector_towards_target.x)
-	if vector_towards_target.x <= 0:
-		return base_angle
-	else:
-		if vector_towards_target.y > 0:
-			return 2*PI + base_angle
-		else:
-			return base_angle
+	if vector_towards_target.x > 0 && vector_towards_target.y > 0:
+		return 2*PI + base_angle #convert ccw angle to cw when enemy is in bottom-right quadrant
+	return base_angle
 	
 func has_valid_target():
 	if target == null:
@@ -89,7 +82,7 @@ func shoot(delta):
 		shoot_cooldown = RECHARGE_RATE
 
 func spawn_bullet():
-	var bullet_direction = Vector2(-cos(turret_head.rotation), -sin(turret_head.rotation))
+	var bullet_direction = -Vector2(cos(turret_head.rotation), sin(turret_head.rotation))
 	var bullet = BULLET.instance()
 	bullet.position = turret_head.position + bullet_direction * 20
 	bullet.set_direction(bullet_direction)
