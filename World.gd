@@ -26,3 +26,7 @@ func _on_Restart_pressed():
 
 func _on_Control_gui_input(_event):
 	get_tree().set_input_as_handled()
+
+
+func _on_ExitGame_pressed():
+	get_tree().quit()

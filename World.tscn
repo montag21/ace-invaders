@@ -34,9 +34,11 @@ texture = ExtResource( 7 )
 centered = false
 
 [node name="Land" parent="Background" instance=ExtResource( 3 )]
+position = Vector2( 0, 376 )
+tile_data = PoolIntArray( 1376256, 0, 0, 1376257, 0, 0, 1376258, 0, 0, 1376259, 0, 0, 1376260, 0, 0, 1376261, 0, 0, 1376262, 0, 0, 1376263, 0, 0, 1376264, 0, 0, 1376265, 0, 0, 1376266, 0, 0, 1376267, 0, 0, 1376268, 0, 0, 1376269, 0, 0, 1376270, 0, 0, 1376271, 0, 0, 1376272, 0, 0, 1376273, 0, 0, 1376274, 0, 0, 1376275, 0, 0, 1376276, 0, 0, 1376277, 0, 0, 1376278, 0, 0, 1376279, 0, 0, 1376280, 0, 0, 1376281, 0, 0, 1376282, 0, 0, 1376283, 0, 0, 1376284, 0, 0, 1376285, 0, 0, 1376286, 0, 0, 1376287, 0, 0, 1376288, 0, 0, 1376289, 0, 0, 1376290, 0, 0, 1376291, 0, 0, 1376292, 0, 0, 1376293, 0, 0, 1376294, 0, 0, 1376295, 0, 0, 1376296, 0, 0, 1376297, 0, 0, 1376298, 0, 0, 1376299, 0, 0, 1376300, 0, 0, 1376301, 0, 0, 1376302, 0, 0, 1376303, 0, 0, 1376304, 0, 0, 1376305, 0, 0, 1376306, 0, 0, 1376307, 0, 0, 1376308, 0, 0, 1376309, 0, 0, 1376310, 0, 0, 1376311, 0, 0, 1376312, 0, 0, 1376313, 0, 0, 1376314, 0, 0, 1376315, 0, 0 )
 
 [node name="Castle" parent="Background" instance=ExtResource( 4 )]
-position = Vector2( 512, 624 )
+position = Vector2( 984, 984 )
 
 [node name="TurretLeft" parent="Background/Castle" instance=ExtResource( 8 )]
 position = Vector2( -176, 48 )
@@ -49,10 +51,10 @@ MAX_ANGLE = 3.3
 [node name="Fun" type="CanvasLayer" parent="."]
 
 [node name="Restart" type="Button" parent="Fun"]
-margin_left = 200.0
-margin_top = 696.0
-margin_right = 257.0
-margin_bottom = 716.0
+margin_left = 208.0
+margin_top = 1056.0
+margin_right = 265.0
+margin_bottom = 1076.0
 text = "Restart"
 script = ExtResource( 6 )
 __meta__ = {
@@ -60,10 +62,10 @@ __meta__ = {
 }
 
 [node name="StacheGuyCounter" type="Label" parent="Fun"]
-margin_left = 152.0
-margin_top = 696.0
-margin_right = 184.0
-margin_bottom = 718.0
+margin_left = 160.0
+margin_top = 1056.0
+margin_right = 192.0
+margin_bottom = 1078.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "0"
 valign = 1
@@ -72,22 +74,35 @@ __meta__ = {
 }
 
 [node name="StacheGuyCounter2" type="Label" parent="Fun"]
-margin_left = 8.0
-margin_top = 696.0
-margin_right = 150.0
-margin_bottom = 718.0
+margin_left = 16.0
+margin_top = 1056.0
+margin_right = 158.0
+margin_bottom = 1078.0
 text = "Stache Guys Spawned:"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control" type="Control" parent="."]
-margin_top = 680.0
-margin_right = 1024.0
-margin_bottom = 720.0
+[node name="UnclickableArea" type="Control" parent="."]
+margin_top = 1040.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controls" type="CanvasLayer" parent="."]
+
+[node name="ExitGame" type="Button" parent="Controls"]
+margin_left = 288.0
+margin_top = 1056.0
+margin_right = 365.0
+margin_bottom = 1076.0
+text = "Exit Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="Fun/Restart" to="." method="_on_Restart_pressed"]
-[connection signal="gui_input" from="Control" to="." method="_on_Control_gui_input"]
+[connection signal="gui_input" from="UnclickableArea" to="." method="_on_Control_gui_input"]
+[connection signal="pressed" from="Controls/ExitGame" to="." method="_on_ExitGame_pressed"]
