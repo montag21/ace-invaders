@@ -103,6 +103,12 @@ text = "Exit Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
 [connection signal="pressed" from="Fun/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="gui_input" from="UnclickableArea" to="." method="_on_Control_gui_input"]
 [connection signal="pressed" from="Controls/ExitGame" to="." method="_on_ExitGame_pressed"]
