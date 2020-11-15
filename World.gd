@@ -2,7 +2,7 @@ extends Node2D
 
 const DROP_SHIP = preload("res://DropShip.tscn")
 
-const INSTANCE_LIMIT = 5
+const INSTANCE_LIMIT = 3
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _unhandled_input(event):
@@ -11,8 +11,6 @@ func _unhandled_input(event):
 		var instance = DROP_SHIP.instance()
 		self.add_child(instance)
 		instance.position = event.position
-
-
 
 func _on_Restart_pressed():
 	get_node("Fun/StacheGuyCounter").set_text("0")
@@ -23,10 +21,8 @@ func _on_Restart_pressed():
 	for n in stacheguys.size():
 		stacheguys[n].queue_free()
 
-
 func _on_Control_gui_input(_event):
 	get_tree().set_input_as_handled()
-
 
 func _on_ExitGame_pressed():
 	get_tree().quit()
