@@ -6,6 +6,7 @@ const JUMP_FORCE = 300
 var velocity = Vector2()
 
 onready var castle_node = get_parent().get_parent().get_node("World/Background/Castle")
+onready var counter_node = get_parent().get_node("Fun/StacheGuyCounter")
 onready var destination = castle_node.position.x
 
 func _ready():
@@ -21,6 +22,8 @@ func _physics_process(delta):
 	elif position.x > destination + 20:
 		velocity.x -= speed
 	else:
+		var previous_value = int(counter_node.get_text())
+		counter_node.set_text(str(previous_value + 1))
 		queue_free()
 		
 	if jump_roll > 0.96 and is_on_floor():
