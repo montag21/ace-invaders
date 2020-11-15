@@ -28,7 +28,6 @@ func setstate(new_state):
 			turret_head.rotation = clamp(turret_head.rotation, MIN_ANGLE, MAX_ANGLE)
 
 func _physics_process(delta):
-	
 	match state:
 		State.SCAN:
 			update_scan_position(delta)

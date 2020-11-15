@@ -15,8 +15,8 @@ func _on_screen_exited():
 
 func _physics_process(delta):
 	var collision = body.move_and_collide(direction * delta)
-	if collision != null:
-		collision.collider.call("take_damage")
+	if collision != null && collision.collider != null:
+		collision.collider.call_deferred("take_damage")
 		queue_free()
 	
 
