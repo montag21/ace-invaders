@@ -2,17 +2,20 @@ extends StaticBody2D
 
 enum State {SCAN, ATTACK}
 
+const BULLET = preload("res://Turret/Bullet/Bullet.tscn")
 const ROTATION_SPEED = 1
 const ATTACK_ROTATION_BOOST = 10
 export var MIN_ANGLE: float = -0.25
 export var MAX_ANGLE: float = 1
 const RANGE = 200
-const RECHARGE_RATE = 100
+const RECHARGE_RATE = 0.2
 const TARGET_MASK = 0b00000000000000001000
 var rotation_direction = 1
 
+var shoot_cooldown: float = 0
 var state
 var target
+
 onready var turret_head = get_node("Head")
 
 func _ready():
@@ -29,8 +32,8 @@ func _physics_process(delta):
 		State.SCAN:
 			update_scan_position(delta)
 		State.ATTACK:
+			shoot(delta)
 			update_attack_position(delta)
-			shoot()
 
 func update_scan_rotation():
 	if turret_head.rotation >= MAX_ANGLE:
@@ -72,6 +75,15 @@ func update_attack_position(delta):
 	var angle = get_angle_to_target()
 	turret_head.rotation = lerp(turret_head.rotation, angle, delta * ROTATION_SPEED * ATTACK_ROTATION_BOOST);
 	
-func shoot():
-	#shoot a projectile here
-	pass
+func shoot(delta):
+	shoot_cooldown -= delta
+	if shoot_cooldown <= 0:
+		spawn_bullet()
+		shoot_cooldown = RECHARGE_RATE
+
+func spawn_bullet():
+	var bullet_angle = get_angle_to_target()
+	var bullet = BULLET.instance()
+	bullet.position = self.position
+	bullet.set_direction(Vector2(-cos(bullet_angle), -sin(bullet_angle)))
+	get_parent().add_child(bullet)

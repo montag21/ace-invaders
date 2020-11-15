@@ -63,6 +63,7 @@ jump={
 2d_render/layer_2="turrets"
 2d_render/layer_3="dropships"
 2d_render/layer_4="units"
+2d_render/layer_5="projectiles"
 
 [rendering]
 

@@ -11,7 +11,6 @@ var velocity = Vector2()
 var spawn_count = 1
 
 func _ready():
-	var sprite = get_node("Sprite")
 	add_to_group("SHIPS")
 	get_node("VisibilityNotifier2D").connect("screen_exited", self, "_on_screen_exited")
 

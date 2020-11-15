@@ -24,5 +24,5 @@ func _on_Restart_pressed():
 		stacheguys[n].queue_free()
 
 
-func _on_Control_gui_input(event):
+func _on_Control_gui_input(_event):
 	get_tree().set_input_as_handled()
