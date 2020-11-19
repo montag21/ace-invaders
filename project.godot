@@ -64,10 +64,15 @@ jump={
 [layer_names]
 
 2d_render/layer_1="walls"
+2d_physics/layer_1="walls"
 2d_render/layer_2="turrets"
+2d_physics/layer_2="turrets"
 2d_render/layer_3="dropships"
+2d_physics/layer_3="dropships"
 2d_render/layer_4="units"
+2d_physics/layer_4="units"
 2d_render/layer_5="projectiles"
+2d_physics/layer_5="projectiles"
 
 [rendering]
 

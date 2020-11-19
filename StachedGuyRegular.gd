@@ -32,4 +32,5 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2.UP)
 
 func bullet_hit(position: Vector2, normal: Vector2):
+	set_physics_process(false)
 	queue_free()
