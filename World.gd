@@ -1,6 +1,6 @@
 extends Node2D
 
-const DROP_SHIP = preload("res://DropShip.tscn")
+const DROP_SHIP = preload("res://DropShip/DropShip.tscn")
 
 const INSTANCE_LIMIT = 3
 

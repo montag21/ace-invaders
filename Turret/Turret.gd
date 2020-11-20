@@ -8,7 +8,7 @@ const ATTACK_ROTATION_BOOST = 5
 export var MIN_ANGLE: float = -0.25
 export var MAX_ANGLE: float = 1
 const RANGE = 200
-const RECHARGE_RATE = 0.5
+export var recharge_rate = 0.75
 const TARGET_MASK = 0b00000000000000001000
 var rotation_direction = 1
 
@@ -80,7 +80,7 @@ func shoot(delta):
 	shoot_cooldown -= delta
 	if shoot_cooldown <= 0:
 		spawn_bullet()
-		shoot_cooldown = RECHARGE_RATE
+		shoot_cooldown = recharge_rate
 
 func spawn_bullet():
 	var bullet_direction = -Vector2(cos(turret_head.rotation), sin(turret_head.rotation))

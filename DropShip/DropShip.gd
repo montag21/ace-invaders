@@ -1,26 +1,19 @@
 extends RigidBody2D
 
-const STACHE_GUY_REGULAR = preload("res://StachedGuyRegular.tscn")
+const STACHE_GUY_REGULAR = preload("res://Stacheling/Stacheling.tscn")
 onready var castle_node = get_parent().get_node("Background/Castle")
 onready var destination = castle_node.position.x
-
-var speed = 200
-var gravity = 800
-var velocity = Vector2()
-var spawn_count = 3
+var spawn_count = 5
 
 func _ready():
 	add_to_group("SHIPS")
 	get_node("VisibilityNotifier2D").connect("screen_exited", self, "_on_screen_exited")
 
-func _physics_process(delta):
-	velocity.y += gravity * delta
+#func _physics_process(delta):
 
 func _on_screen_exited():
-	print_debug("Instance exited screen!")
 	remove_from_group("SHIPS")
 	queue_free()
-
 
 func _on_GroundDetector_body_entered(body):
 	if body.name == "Land":
