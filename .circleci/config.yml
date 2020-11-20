@@ -44,7 +44,7 @@ jobs:
 workflows:
   build-deploy:
     jobs:
-      - build-deploy:
+      - publish-itchio:
           filters:
             branches:
               only:
