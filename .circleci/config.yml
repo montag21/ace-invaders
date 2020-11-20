@@ -42,6 +42,7 @@ jobs:
             command: ./butler push web.zip yakovko/ace-invaders:web
 
 workflows:
+  version: 2
   build-deploy:
     jobs:
       - publish-itchio:
