@@ -35,7 +35,7 @@ jobs:
             name: Export Web build
             command: |
               mkdir -p web
-              ./godot -v --export "HTML5" project.godot "web/index.html"
+              ./godot -v --export-debug "HTML5" project.godot "web/index.html"
               zip -r web.zip web
         - run:
             name: Upload Web build
