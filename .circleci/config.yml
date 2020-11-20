@@ -3,7 +3,7 @@ version: 2
 jobs:
     publish-itchio:
       docker:
-        - image: ubuntu:stable
+        - image: ubuntu:latest
       steps:
         - checkout
         - run:
