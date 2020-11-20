@@ -1,45 +1,52 @@
 version: 2
+
 jobs:
-  build:
-    branches:
-      only:
-        - main
-    machine:
-        enabled: true
+  publish-itchio:
+    docker:
+      - image: debian:latest
     steps:
       - checkout
       - run:
           name: Install dependencies
           command: |
-              sudo apt-get update
-              sudo apt-get -y install wget zip unzip
+            apt-get update
+            apt-get -y install wget zip unzip
       - run:
           name: Download Godot 3.2.3
           command: |
-              wget -q https://downloads.tuxfamily.org/godotengine/3.2.3/Godot_v3.2.3-stable_linux_headless.64.zip
-              unzip Godot_v3.2.3-stable_linux_headless.64.zip
-              mv Godot_v3.2.3-stable_linux_headless.64 godot
-              chmod +x godot
+            wget -q https://downloads.tuxfamily.org/godotengine/3.2.3/Godot_v3.2.3-stable_linux_headless.64.zip
+            unzip Godot_v3.2.3-stable_linux_headless.64.zip
+            mv Godot_v3.2.3-stable_linux_headless.64 godot
+            chmod +x godot
       - run:
           name: Download Godot 3.2.3 Export Templates
           command: |
-              wget -q https://downloads.tuxfamily.org/godotengine/3.2.3/Godot_v3.2.3-stable_export_templates.tpz
-              mkdir -p ~/.local/share/godot/templates
-              unzip Godot_v3.2.3-stable_export_templates.tpz -d ~/.local/share/godot/templates
-              mv ~/.local/share/godot/templates/templates ~/.local/share/godot/templates/3.2.3.stable
+            wget -q https://downloads.tuxfamily.org/godotengine/3.2.3/Godot_v3.2.3-stable_export_templates.tpz
+            mkdir -p ~/.local/share/godot/templates
+            unzip Godot_v3.2.3-stable_export_templates.tpz -d ~/.local/share/godot/templates
+            mv ~/.local/share/godot/templates/templates ~/.local/share/godot/templates/3.2.3.stable
       - run:
           name: Download butler
           command: |
-              wget -q -O butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
-              unzip butler.zip
-              chmod +x butler
+            wget -q -O butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+            unzip butler.zip
+            chmod +x butler
       - run:
           name: Export Web build
           command: |
-              mkdir -p web
-              ./godot -v --export "HTML5" project.godot "web/index.html"
-              zip -r web.zip web
+            mkdir -p web
+            ./godot -v --export-debug "HTML5" project.godot "web/index.html"
+            zip -r web.zip web
       - run:
           name: Upload Web build
           command: ./butler push web.zip yakovko/ace-invaders:web
 
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - publish-itchio:
+          filters:
+            branches:
+              only:
+                - master
