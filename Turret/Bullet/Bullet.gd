@@ -18,7 +18,6 @@ func _physics_process(delta):
 	if collision != null && collision.collider != null:
 		collision.collider.call_deferred("bullet_hit", collision.position, collision.normal)
 		queue_free()
-	
 
 func set_direction(dir: Vector2):
 	direction = dir * SPEED
