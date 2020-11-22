@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Menu/fonts/montserrat_48.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Menu/fonts/montserrat_24.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Menu/return_to_title.gd" type="Script" id=3]
+[ext_resource path="res://Menu/Members/AndrikRow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Menu/Members/AntonRow.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Menu/Members/OlegBoikoRow.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Menu/Members/IvanDatskoRow.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Menu/Members/YakivRow.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Menu/Members/OleksiiRow.tscn" type="PackedScene" id=9]
 
 [node name="Credits" type="Control"]
 anchor_right = 1.0
@@ -13,32 +19,61 @@ __meta__ = {
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_left = 0.000752385
+anchor_left = 0.000152842
 anchor_top = -0.00133763
-anchor_right = 1.00075
+anchor_right = 1.00015
 anchor_bottom = 0.998662
-margin_top = -1.33325
-margin_bottom = -1.33325
+margin_left = -1.68896
+margin_top = -2.56848
+margin_right = -1.68896
+margin_bottom = -2.5686
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 773.0
-margin_top = 489.0
-margin_right = 1146.0
-margin_bottom = 590.0
+margin_left = 660.0
+margin_top = 117.0
+margin_right = 1260.0
+margin_bottom = 962.0
+rect_min_size = Vector2( 600, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 373.0
+margin_right = 600.0
 margin_bottom = 60.0
 custom_fonts/font = ExtResource( 1 )
-text = "Credits Screen"
+text = "Credits"
+align = 1
+
+[node name="OlegBoikoRow" parent="CenterContainer/VBoxContainer" instance=ExtResource( 6 )]
+
+[node name="AndrikRow" parent="CenterContainer/VBoxContainer" instance=ExtResource( 4 )]
+margin_top = 188.0
+margin_bottom = 308.0
+
+[node name="AntonRow" parent="CenterContainer/VBoxContainer" instance=ExtResource( 5 )]
+margin_top = 312.0
+margin_bottom = 432.0
+
+[node name="YakivRow" parent="CenterContainer/VBoxContainer" instance=ExtResource( 8 )]
+margin_top = 436.0
+margin_bottom = 556.0
+
+[node name="IvanRow" parent="CenterContainer/VBoxContainer" instance=ExtResource( 7 )]
+margin_top = 560.0
+margin_bottom = 680.0
+
+[node name="OleksiiRow" parent="CenterContainer/VBoxContainer" instance=ExtResource( 9 )]
+margin_top = 684.0
+margin_bottom = 804.0
 
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 64.0
-margin_right = 373.0
-margin_bottom = 101.0
+margin_top = 808.0
+margin_right = 600.0
+margin_bottom = 845.0
 custom_fonts/font = ExtResource( 2 )
 text = "Back"
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]

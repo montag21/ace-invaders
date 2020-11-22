@@ -4,7 +4,7 @@
 [ext_resource path="res://Menu/Buttons/CreditsButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Menu/Buttons/PlayButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Menu/Buttons/ExitButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Menu/Moon.png" type="Texture" id=5]
+[ext_resource path="res://Menu/Background.jpg" type="Texture" id=5]
 [ext_resource path="res://Menu/fonts/montserrat_24.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Menu/fade_in/FadeIn.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Menu/Title Screen.gd" type="Script" id=8]
@@ -13,6 +13,14 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -35,48 +43,42 @@ stretch_mode = 4
 [node name="CenterRow" type="HBoxContainer" parent="Menu"]
 margin_top = 119.0
 margin_right = 1680.0
-margin_bottom = 759.0
+margin_bottom = 919.0
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
-margin_right = 838.0
-margin_bottom = 640.0
+margin_right = 1680.0
+margin_bottom = 800.0
+rect_min_size = Vector2( 0, 800 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="PlayButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
-margin_top = 226.0
-margin_right = 838.0
-margin_bottom = 286.0
+margin_top = 276.0
+margin_right = 360.0
+margin_bottom = 336.0
+rect_min_size = Vector2( 360, 60 )
+size_flags_horizontal = 1
+size_flags_vertical = 1
 
 [node name="CreditsButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 2 )]
-margin_top = 290.0
-margin_right = 838.0
-margin_bottom = 350.0
+margin_top = 340.0
+margin_bottom = 460.0
+size_flags_vertical = 1
 
 [node name="ExitButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
-margin_top = 354.0
-margin_right = 838.0
-margin_bottom = 414.0
-
-[node name="CenterContainer" type="CenterContainer" parent="Menu/CenterRow"]
-margin_left = 842.0
-margin_right = 1680.0
-margin_bottom = 640.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Moon" type="TextureRect" parent="Menu/CenterRow/CenterContainer"]
-margin_left = 114.0
-margin_right = 724.0
-margin_bottom = 640.0
-texture = ExtResource( 5 )
+margin_top = 464.0
+margin_right = 360.0
+margin_bottom = 584.0
+rect_min_size = Vector2( 360, 60 )
+size_flags_horizontal = 1
+size_flags_vertical = 1
 
 [node name="VersionLabel" type="Label" parent="Menu"]
-margin_top = 763.0
+margin_top = 923.0
 margin_right = 1680.0
-margin_bottom = 920.0
+margin_bottom = 988.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 6 )
