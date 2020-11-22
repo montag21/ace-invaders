@@ -11,14 +11,11 @@ func _ready():
 	get_node("VisibilityNotifier2D").connect("screen_exited", self, "_on_screen_exited")
 	connect("body_entered", self, "_on_hit")
 
-#func _physics_process(delta):
-
 func _on_screen_exited():
 	die()
 	
 func die():
 	set_physics_process(false)
-	velocity = Vector2.ZERO
 	$Sprite.hide()
 	remove_from_group("SHIPS")
 	var explosion = EXPLOSION.instance()
