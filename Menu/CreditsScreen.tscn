@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Menu/fonts/montserrat_48.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Menu/fonts/montserrat_24.tres" type="DynamicFont" id=2]
@@ -9,11 +9,20 @@
 [ext_resource path="res://Menu/Members/IvanDatskoRow.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Menu/Members/YakivRow.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Menu/Members/OleksiiRow.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Menu/Background.jpg" type="Texture" id=10]
 
 [node name="Credits" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
