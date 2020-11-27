@@ -14,8 +14,7 @@ script = ExtResource( 3 )
 texture = ExtResource( 2 )
 
 [node name="Head" type="Sprite" parent="."]
-position = Vector2( -1.88954, 0 )
-rotation = 1.5708
+position = Vector2( 0, -29 )
 texture = ExtResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
