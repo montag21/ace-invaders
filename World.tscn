@@ -57,8 +57,9 @@ MAX_ANGLE = 0.5
 
 [node name="TurretRight" parent="Background/Castle" instance=ExtResource( 8 )]
 position = Vector2( 176, 56 )
-MIN_ANGLE = 2.75
-MAX_ANGLE = 3.5
+DIRECTION = 1
+MIN_ANGLE = -0.25
+MAX_ANGLE = 0.5
 
 [node name="Fun" type="CanvasLayer" parent="."]
 

@@ -1,10 +1,12 @@
 extends StaticBody2D
 
 enum State {SCAN, ATTACK}
+enum Direction { Left, Right }
 
 const BULLET = preload("res://Turret/Bullet/Bullet.tscn")
 const ROTATION_SPEED = 1
 const ATTACK_ROTATION_BOOST = 5
+export(Direction) var DIRECTION = Direction.Left setget set_direction
 export var MIN_ANGLE: float = -0.25
 export var MAX_ANGLE: float = 1
 const RANGE = 200
@@ -21,7 +23,13 @@ onready var turret_head = get_node("Head")
 func _ready():
 	turret_head.rotation = MIN_ANGLE
 	setstate(State.SCAN)
-	
+
+func set_direction(_direction):
+	var should_flip = _direction == Direction.Right
+	$Base.flip_h = should_flip
+	$Head.flip_h = should_flip
+	DIRECTION = _direction
+
 func setstate(new_state):
 	state = new_state
 
@@ -43,23 +51,35 @@ func update_scan_position(delta):
 	turret_head.rotate(rotation_direction * ROTATION_SPEED * delta)
 	update_scan_direction()
 	raycast()
-	
-	
+
+func get_turret_rotation():
+	var _turret_head_rotation = turret_head.rotation
+	if DIRECTION == Direction.Right:
+		if _turret_head_rotation > PI:
+			_turret_head_rotation = PI - _turret_head_rotation
+		else:
+			_turret_head_rotation = PI + _turret_head_rotation
+	return _turret_head_rotation
+
 func raycast():
+
 	var space_state = get_world_2d().direct_space_state
-	var target_position = turret_head.global_position - polar2cartesian(RANGE, turret_head.rotation)
+	var target_position = turret_head.global_position - polar2cartesian(RANGE, get_turret_rotation())
 	var result = space_state.intersect_ray(turret_head.global_position, target_position, [self], TARGET_MASK)
 	if !result.empty():
 		target = result.collider
 		setstate(State.ATTACK)
-	
+
 func get_angle_to_target():
 	var vector_towards_target = target.global_position - turret_head.global_position
-	var base_angle = atan2(-vector_towards_target.y, -vector_towards_target.x)
-	if vector_towards_target.x > 0 && vector_towards_target.y > 0:
-		return 2*PI + base_angle #convert ccw angle to cw when enemy is in bottom-right quadrant
-	return base_angle
-	
+	var _angle_to_target = atan2(-vector_towards_target.y, -vector_towards_target.x)
+	if DIRECTION == Direction.Right:
+		if _angle_to_target < 0:
+			_angle_to_target = PI + _angle_to_target
+		else:
+			_angle_to_target = -(PI - _angle_to_target)
+	return _angle_to_target
+
 func has_valid_target():
 	if target == null:
 		return false
@@ -75,7 +95,7 @@ func update_attack_position(delta):
 		return
 	var angle = get_angle_to_target()
 	turret_head.rotation = lerp(turret_head.rotation, angle, delta * ROTATION_SPEED * ATTACK_ROTATION_BOOST);
-	
+
 func shoot(delta):
 	shoot_cooldown -= delta
 	if shoot_cooldown <= 0:
@@ -83,7 +103,8 @@ func shoot(delta):
 		shoot_cooldown = recharge_rate
 
 func spawn_bullet():
-	var bullet_direction = -Vector2(cos(turret_head.rotation), sin(turret_head.rotation))
+	var _turret_rotation = get_turret_rotation()
+	var bullet_direction = -Vector2(cos(_turret_rotation), sin(_turret_rotation))
 	var bullet = BULLET.instance()
 	bullet.position = turret_head.position + bullet_direction * 20
 	bullet.set_direction(bullet_direction)
