@@ -37,3 +37,14 @@ func _on_GroundDetector_body_entered(body):
 
 func rocket_hit():
 	die()
+
+func _process(delta):
+	if $RayCast2D.is_colliding():
+		var origin = $RayCast2D.global_transform.origin
+		var collision_point = $RayCast2D.get_collision_point()
+		var distance = origin.distance_to(collision_point)
+		if distance > 50:
+			linear_velocity = Vector2(0, distance)
+		if distance > 1:
+			$Exhaust.emitting = true
+		else: $Exhaust.emitting = false
