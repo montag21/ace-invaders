@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/stache-guy.png-f2b764911a311ca9c184ebcdeea5e34f.stex"
+path="res://.import/dropship.png-828f1b9651ea56573bef7486d7a9253c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://stache-guy.png"
-dest_files=[ "res://.import/stache-guy.png-f2b764911a311ca9c184ebcdeea5e34f.stex" ]
+source_file="res://DropShip/dropship.png"
+dest_files=[ "res://.import/dropship.png-828f1b9651ea56573bef7486d7a9253c.stex" ]
 
 [params]
 

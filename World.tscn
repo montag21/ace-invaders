@@ -42,22 +42,24 @@ tile_data = PoolIntArray( 1245199, 0, 0, 1245200, 0, 0, 1245201, 0, 0, 1245202, 
 position = Vector2( 928, 920 )
 
 [node name="RocketTurretLeft" parent="Background/Castle" instance=ExtResource( 5 )]
-position = Vector2( -130, 48 )
+position = Vector2( -130, 49 )
 RECHARGE_RATE = 0.5
 SCAN_RADIUS = 500
 
 [node name="RocketTurretRight" parent="Background/Castle" instance=ExtResource( 5 )]
-position = Vector2( 130, 48 )
+position = Vector2( 130, 49 )
 RECHARGE_RATE = 0.5
 SCAN_RADIUS = 500
 
 [node name="TurretLeft" parent="Background/Castle" instance=ExtResource( 8 )]
-position = Vector2( -176, 48 )
+position = Vector2( -176, 56 )
+MAX_ANGLE = 0.5
 
 [node name="TurretRight" parent="Background/Castle" instance=ExtResource( 8 )]
-position = Vector2( 176, 48 )
-MIN_ANGLE = 2.0
-MAX_ANGLE = 3.3
+position = Vector2( 176, 56 )
+DIRECTION = 1
+MIN_ANGLE = -0.25
+MAX_ANGLE = 0.5
 
 [node name="Fun" type="CanvasLayer" parent="."]
 
