@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Pause.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Restart.gd" type="Script" id=6]
 [ext_resource path="res://backdrop.png" type="Texture" id=7]
 [ext_resource path="res://Turret/Turret.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/LaunchButton/LaunchButton.tscn" type="PackedScene" id=9]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
@@ -44,12 +45,10 @@ position = Vector2( 928, 920 )
 [node name="RocketTurretLeft" parent="Background/Castle" instance=ExtResource( 5 )]
 position = Vector2( -130, 49 )
 RECHARGE_RATE = 0.5
-SCAN_RADIUS = 500
 
 [node name="RocketTurretRight" parent="Background/Castle" instance=ExtResource( 5 )]
 position = Vector2( 130, 49 )
 RECHARGE_RATE = 0.5
-SCAN_RADIUS = 500
 
 [node name="TurretLeft" parent="Background/Castle" instance=ExtResource( 8 )]
 position = Vector2( -176, 56 )
@@ -58,7 +57,6 @@ MAX_ANGLE = 0.5
 [node name="TurretRight" parent="Background/Castle" instance=ExtResource( 8 )]
 position = Vector2( 176, 56 )
 DIRECTION = 1
-MIN_ANGLE = -0.25
 MAX_ANGLE = 0.5
 
 [node name="Fun" type="CanvasLayer" parent="."]
@@ -95,6 +93,12 @@ __meta__ = {
 }
 
 [node name="Controls" type="CanvasLayer" parent="."]
+
+[node name="LunchButton" parent="Controls" instance=ExtResource( 9 )]
+margin_left = 881.036
+margin_top = 17.0523
+margin_right = -874.964
+margin_bottom = -1021.95
 
 [node name="ExitGame" type="Button" parent="Controls"]
 margin_left = 248.0
