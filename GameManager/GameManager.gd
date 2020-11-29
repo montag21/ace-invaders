@@ -23,9 +23,6 @@ func launch_dropship():
 	if dropship_pool <= 0:
 		set_game_phase(GamePhase.LandingPrep)
 	
-func set_stacheling_target(_target):
-	stacheling_target = _target
-	
 func start_landing():
 	set_game_phase(GamePhase.LandingStart)
 	
@@ -43,3 +40,8 @@ func set_game_phase(_game_phase):
 		GamePhase.Launch:
 			init_dropship_pool()
 	emit_signal("game_phase_changed", _game_phase)
+	
+func init_world(_world, _main_poi):
+	world = _world
+	stacheling_target = _main_poi
+	reset()

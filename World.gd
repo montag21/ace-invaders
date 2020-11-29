@@ -1,8 +1,7 @@
 extends Node2D
 
 func _ready():
-	GameManager.set_stacheling_target($Background/Castle.position)
-	GameManager.world = self
+	GameManager.init_world(self, $Background/Castle.position)
 	
 func _on_Restart_pressed():
 	GameManager.reset()
