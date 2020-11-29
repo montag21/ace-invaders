@@ -94,11 +94,13 @@ __meta__ = {
 
 [node name="Controls" type="CanvasLayer" parent="."]
 
-[node name="LunchButton" parent="Controls" instance=ExtResource( 9 )]
-margin_left = 881.036
-margin_top = 17.0523
-margin_right = -874.964
-margin_bottom = -1021.95
+[node name="LaunchButton" parent="Controls" instance=ExtResource( 9 )]
+margin_left = 691.042
+margin_top = 505.596
+margin_right = -1064.96
+margin_bottom = -534.404
+rect_scale = Vector2( 3, 3 )
+custom_colors/font_color = Color( 0.00392157, 0.815686, 0.94902, 1 )
 
 [node name="ExitGame" type="Button" parent="Controls"]
 margin_left = 248.0

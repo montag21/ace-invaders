@@ -24,5 +24,5 @@ func _pressed():
 	if text == "Land":
 		GameManager.start_landing()
 		return
-	update_text()
 	GameManager.launch_dropship()
+	update_text()

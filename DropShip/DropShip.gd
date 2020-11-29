@@ -33,7 +33,6 @@ func set_state(_state):
 			$VisibilityNotifier2D.disconnect("screen_exited", self, "_on_screen_exited")
 		State.Orbit:
 			mode = RigidBody2D.MODE_KINEMATIC
-			linear_velocity = Vector2.RIGHT * orbit_speed
 			$VisibilityNotifier2D.connect("screen_exited", self, "_on_screen_exited_orbit")
 		State.Land:
 			linear_velocity = Vector2.ZERO
@@ -44,7 +43,7 @@ func set_state(_state):
 func start_entry(_start_position, _orbit_height):
 	position = _start_position
 	orbit_height = _orbit_height
-	velocity = Vector2(0.75, 1) * orbit_speed * 3
+	velocity = Vector2(1, 0.75) * orbit_speed * 3
 
 func _physics_process(delta):
 	match state:
@@ -54,6 +53,8 @@ func _physics_process(delta):
 			velocity = velocity.linear_interpolate(Vector2.RIGHT * orbit_speed,  1/orbit_delta)
 			if orbit_delta == 1:
 				set_state(State.Orbit)
+		State.Orbit:
+			position += Vector2.RIGHT * orbit_speed * delta
 
 func die():
 	set_physics_process(false)
