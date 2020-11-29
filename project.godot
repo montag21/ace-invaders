@@ -20,7 +20,7 @@ run/main_scene="res://Menu/Title Screen.tscn"
 
 [autoload]
 
-GameState="*res://GameState/GameState.tscn"
+GameManager="*res://GameManager/GameManager.tscn"
 
 [display]
 

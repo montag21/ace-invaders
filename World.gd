@@ -13,7 +13,7 @@ func _unhandled_input(event):
 		instance.position = event.position
 
 func _on_Restart_pressed():
-    # Restart GameState
+	GameManager.reset()
 	get_node("Fun/StacheGuyCounter").set_text("0")
 	var dropships = get_tree().get_nodes_in_group("SHIPS")
 	for n in dropships.size():

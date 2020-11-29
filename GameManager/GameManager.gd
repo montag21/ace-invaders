@@ -8,6 +8,9 @@ var dropship_pool setget set_dropship_pool
 
 func _ready():
 	set_game_phase(GamePhase.Launch)
+	
+func reset():
+	set_game_phase(GamePhase.Launch)
 
 func set_game_phase(_game_phase):
 	current_phase = _game_phase
