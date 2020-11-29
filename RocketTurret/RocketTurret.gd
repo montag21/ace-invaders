@@ -3,7 +3,6 @@ extends Node2D
 enum State {IDLE, ATTACK}
 
 export var RECHARGE_RATE = 1.0
-export var SCAN_RADIUS = 400 setget set_scan_radius
 
 const ROCKET = preload("res://RocketTurret/Rocket/Rocket.tscn")
 const TARGET_MASK = 0b00000000000000000100
@@ -20,9 +19,6 @@ func _ready():
 	
 func setstate(new_state):
 	state = new_state
-	
-func set_scan_radius(_radius):
-	($Area2D/CollisionShape2D.shape as CircleShape2D).radius = _radius
 
 func _physics_process(delta):
 	cleanup_targets()
