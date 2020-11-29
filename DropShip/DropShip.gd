@@ -45,7 +45,7 @@ func start_entry(_start_position, _orbit_height):
 	orbit_height = _orbit_height
 	velocity = Vector2(1, 0.75) * orbit_speed * 3
 
-func _physics_process(delta):
+func _process(delta):
 	match state:
 		State.Entry:
 			position += velocity * delta
@@ -55,6 +55,17 @@ func _physics_process(delta):
 				set_state(State.Orbit)
 		State.Orbit:
 			position += Vector2.RIGHT * orbit_speed * delta
+			
+	# Landing logic
+	if $RayCast2D.is_colliding():
+		var origin = $RayCast2D.global_transform.origin
+		var collision_point = $RayCast2D.get_collision_point()
+		var distance = origin.distance_to(collision_point)
+		if distance > 50:
+			linear_velocity = Vector2(0, distance)
+		if distance > 1:
+			$Exhaust.emitting = true
+		else: $Exhaust.emitting = false
 
 func die():
 	set_physics_process(false)
@@ -84,14 +95,3 @@ func _on_GroundDetector_body_entered(body):
 
 func rocket_hit():
 	die()
-
-func _process(delta):
-	if $RayCast2D.is_colliding():
-		var origin = $RayCast2D.global_transform.origin
-		var collision_point = $RayCast2D.get_collision_point()
-		var distance = origin.distance_to(collision_point)
-		if distance > 50:
-			linear_velocity = Vector2(0, distance)
-		if distance > 1:
-			$Exhaust.emitting = true
-		else: $Exhaust.emitting = false
