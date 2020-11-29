@@ -43,13 +43,13 @@ stretch_mode = 4
 [node name="CenterRow" type="HBoxContainer" parent="Menu"]
 margin_top = 119.0
 margin_right = 1680.0
-margin_bottom = 919.0
+margin_bottom = 920.0
 size_flags_vertical = 3
 alignment = 1
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
 margin_right = 1680.0
-margin_bottom = 800.0
+margin_bottom = 801.0
 rect_min_size = Vector2( 0, 800 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -76,9 +76,10 @@ size_flags_horizontal = 1
 size_flags_vertical = 4
 
 [node name="VersionLabel" type="Label" parent="Menu"]
+visible = false
 margin_top = 923.0
 margin_right = 1680.0
-margin_bottom = 988.0
+margin_bottom = 1072.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 6 )
