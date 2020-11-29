@@ -1,14 +1,39 @@
 extends Node
 
-enum GamePhase { Launch, Landing, Win, Loss }
+enum GamePhase { Launch, LandingPrep, LandingStart, Win, Loss }
 signal game_phase_changed
 
+const DROP_SHIP = preload("res://DropShip/DropShip.tscn")
+
 var current_phase setget set_game_phase
-var dropship_pool setget set_dropship_pool
+var dropship_pool
+var stacheling_target
+var world
 
 func _ready():
 	set_game_phase(GamePhase.Launch)
 	
+func init_dropship_pool():
+	dropship_pool = 3
+	
+func launch_dropship():
+	assert(current_phase == GamePhase.Launch && dropship_pool  > 0, "Unable to launch dropship")
+	dropship_pool -= 1
+	init_dropship()
+	if dropship_pool <= 0:
+		set_game_phase(GamePhase.LandingPrep)
+	
+func set_stacheling_target(_target):
+	stacheling_target = _target
+	
+func start_landing():
+	set_game_phase(GamePhase.LandingStart)
+	
+func init_dropship():
+	var instance = DROP_SHIP.instance()
+	world.add_child(instance)
+	instance.start_entry(Vector2(-10,-10), 250)
+		
 func reset():
 	set_game_phase(GamePhase.Launch)
 
@@ -16,11 +41,5 @@ func set_game_phase(_game_phase):
 	current_phase = _game_phase
 	match _game_phase:
 		GamePhase.Launch:
-			dropship_pool = 3
+			init_dropship_pool()
 	emit_signal("game_phase_changed", _game_phase)
-			
-			
-func set_dropship_pool(_val):
-	dropship_pool = _val
-	if dropship_pool <= 0 && current_phase == GamePhase.Launch:
-		set_game_phase(GamePhase.Landing)

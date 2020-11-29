@@ -1,17 +1,9 @@
 extends Node2D
 
-const DROP_SHIP = preload("res://DropShip/DropShip.tscn")
-
-const INSTANCE_LIMIT = 3
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _unhandled_input(event):
-	var instance_count = get_tree().get_nodes_in_group("SHIPS").size()
-	if event is InputEventMouseButton and event.is_pressed() and instance_count < INSTANCE_LIMIT:
-		var instance = DROP_SHIP.instance()
-		self.add_child(instance)
-		instance.position = event.position
-
+func _ready():
+	GameManager.set_stacheling_target($Background/Castle.position)
+	GameManager.world = self
+	
 func _on_Restart_pressed():
 	GameManager.reset()
 	get_node("Fun/StacheGuyCounter").set_text("0")
