@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Menu/Intro/GeneralSpeech.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Menu/Sounds/Intro_1.wav" type="AudioStream" id=2]
+[ext_resource path="res://Menu/Intro/GeneralSpeechFirst.gd" type="Script" id=3]
+
+[node name="Control" instance=ExtResource( 1 )]
+rect_pivot_offset = Vector2( 1311.37, -269.632 )
+script = ExtResource( 3 )
+
+[node name="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource( 2 )
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
