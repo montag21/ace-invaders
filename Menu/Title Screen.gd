@@ -1,7 +1,10 @@
 extends Control
 
+func _ready():
+	$AudioStreamPlayer.play()
 
 func _on_PlayButton_pressed():
+	$AudioStreamPlayer.stop()
 	get_tree().change_scene("res://World.tscn")
 
 

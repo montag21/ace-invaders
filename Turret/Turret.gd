@@ -100,6 +100,7 @@ func shoot(delta):
 	shoot_cooldown -= delta
 	if shoot_cooldown <= 0:
 		spawn_bullet()
+		$AudioStreamPlayer2D.play()
 		shoot_cooldown = recharge_rate
 
 func spawn_bullet():

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/spaceEngine_003.ogg-a086d4c5fde4f8b404b1c41f9b769463.oggstr"
+
+[deps]
+
+source_file="res://RocketTurret/Rocket/spaceEngine_003.ogg"
+dest_files=[ "res://.import/spaceEngine_003.ogg-a086d4c5fde4f8b404b1c41f9b769463.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

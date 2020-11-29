@@ -12,4 +12,4 @@ texture = ExtResource( 1 )
 text = "Andrik Fatman"
 
 [node name="Role" parent="." index="2"]
-text = "UI Designer"
+text = "Artist"

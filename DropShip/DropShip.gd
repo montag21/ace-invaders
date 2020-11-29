@@ -6,6 +6,7 @@ const EXPLOSION = preload("res://Explosion/Explosion.tscn")
 const STACHE_GUY_REGULAR = preload("res://Stacheling/Stacheling.tscn")
 onready var destination = GameManager.stacheling_target.x
 const orbit_speed = 200
+var exhaust_on = false
 
 var spawn_count = 5
 var state = State.Entry setget set_state
@@ -61,11 +62,15 @@ func _process(delta):
 		var origin = $RayCast2D.global_transform.origin
 		var collision_point = $RayCast2D.get_collision_point()
 		var distance = origin.distance_to(collision_point)
-		if distance > 50:
-			linear_velocity = Vector2(0, distance)
-		if distance > 1:
+		linear_velocity = Vector2(0, distance)
+		if $Exhaust.emitting == false:
 			$Exhaust.emitting = true
-		else: $Exhaust.emitting = false
+			exhaust_on = true
+			$AudioStreamPlayer2D.play()
+		if distance <= 30:
+			$Exhaust.emitting = false
+			exhaust_on = false
+			$AudioStreamPlayer2D.stop()
 
 func die():
 	set_physics_process(false)

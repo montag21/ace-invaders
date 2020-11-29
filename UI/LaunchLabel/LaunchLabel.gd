@@ -1,4 +1,4 @@
-extends Button
+extends Label
 
 func _ready():
 	GameManager.connect("game_phase_changed", self, "_on_game_phase_changed")
@@ -16,13 +16,14 @@ func _on_game_phase_changed(_current_phase):
 
 func update_text():
 	if GameManager.dropship_pool > 0:
-		text = "Launch Dropship (%s left)" % GameManager.dropship_pool
+		text = "Press [SPACE]\nto launch a dropship\n(%s left)" % GameManager.dropship_pool
 		return
-	text = "Land"
-	
-func _pressed():
-	if text == "Land":
-		GameManager.start_landing()
-		return
-	GameManager.launch_dropship()
-	update_text()
+	text = "Press [SPACE] to land"
+
+func _unhandled_key_input(event):
+	if event.is_action_pressed("player_input"):
+		if text == "Press [SPACE] to land":
+			GameManager.start_landing()
+			return
+		GameManager.launch_dropship()
+		update_text()

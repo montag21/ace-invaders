@@ -15,6 +15,7 @@ func _ready():
 	$VisibilityNotifier2D.connect("screen_exited", self, "_on_screen_exited")
 
 func start(_target):
+	$AudioStreamPlayer2D.play()
 	target = _target
 	velocity = Vector2(cos(rotation), sin(rotation)) * start_speed
 	
@@ -35,6 +36,7 @@ func die(explode = true):
 		var explosion = EXPLOSION.instance()
 		get_parent().add_child(explosion)
 		explosion.trigger(position, 0.3)
+		$AudioStreamPlayer2D.stop()
 	queue_free()
 	
 func seek():
