@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Menu/fonts/montserrat_48.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Menu/fonts/montserrat_24.tres" type="DynamicFont" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Menu/Members/YakivRow.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Menu/Members/OleksiiRow.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Menu/Background.jpg" type="Texture" id=10]
+[ext_resource path="res://Menu/Members/IlliaRow.tscn" type="PackedScene" id=11]
 
 [node name="Credits" type="Control"]
 anchor_right = 1.0
@@ -41,10 +42,10 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 660.0
-margin_top = 117.0
-margin_right = 1260.0
-margin_bottom = 962.0
+margin_left = 659.0
+margin_top = 55.0
+margin_right = 1259.0
+margin_bottom = 1024.0
 rect_min_size = Vector2( 600, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -79,10 +80,14 @@ margin_bottom = 680.0
 margin_top = 684.0
 margin_bottom = 804.0
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="YakivRow2" parent="CenterContainer/VBoxContainer" instance=ExtResource( 11 )]
 margin_top = 808.0
+margin_bottom = 928.0
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 932.0
 margin_right = 600.0
-margin_bottom = 845.0
+margin_bottom = 969.0
 custom_fonts/font = ExtResource( 2 )
 text = "Back"
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
