@@ -4,8 +4,18 @@
 
 [node name="OlegBoikoRow" instance=ExtResource( 1 )]
 
+[node name="Avatar" parent="." index="0"]
+rect_min_size = Vector2( 120, 120 )
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
 [node name="Name" parent="." index="1"]
+margin_right = 524.0
+rect_min_size = Vector2( 350, 0 )
 text = "Oleg Boiko"
 
 [node name="Role" parent="." index="2"]
+margin_left = 528.0
+margin_right = 878.0
+rect_min_size = Vector2( 350, 0 )
 text = "UX Architect"

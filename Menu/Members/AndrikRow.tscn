@@ -9,7 +9,10 @@
 texture = ExtResource( 1 )
 
 [node name="Name" parent="." index="1"]
+margin_right = 434.0
 text = "Andrik Fatman"
 
 [node name="Role" parent="." index="2"]
-text = "Artist"
+margin_left = 438.0
+margin_right = 751.0
+text = "Graphics Artist"
