@@ -13,4 +13,5 @@ func _on_ContunueButton_pressed():
 
 
 func _on_QuitButton_pressed():
+	get_tree().paused = false
 	get_tree().change_scene("res://Menu/Title Screen.tscn")

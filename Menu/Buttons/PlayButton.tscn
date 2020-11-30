@@ -5,9 +5,11 @@
 [sub_resource type="Theme" id=1]
 
 [node name="PlayButton" instance=ExtResource( 1 )]
+size_flags_horizontal = 1
+size_flags_vertical = 1
 
 [node name="Label" parent="." index="0"]
 size_flags_horizontal = 1
-size_flags_vertical = 4
+size_flags_vertical = 5
 theme = SubResource( 1 )
 text = "Play"
