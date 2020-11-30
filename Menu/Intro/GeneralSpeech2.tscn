@@ -11,7 +11,9 @@ script = ExtResource( 2 )
 anchor_left = -0.00341157
 anchor_right = -0.00341157
 margin_right = 815.533
-text = "As of now you will lead a top-secret Moonshot operation. Your primary objective is to penetrate the enemy defense as hard as possible and capture the VIP creature at the heart of the Moon Castle!"
+text = "As of now you will lead a top-secret Moonshot operation.
+
+Your primary objective is to penetrate the enemy defense as hard as possible and capture the VIP creature at the heart of the Moon Castle!"
 
 [node name="AudioStreamPlayer" parent="." index="3"]
 stream = ExtResource( 3 )
