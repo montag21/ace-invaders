@@ -79,7 +79,7 @@ custom_styles/panel = SubResource( 1 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/Panel"]
 anchor_left = -0.00158706
-anchor_top = 0.00555241
+anchor_top = 0.0055524
 anchor_right = -0.00158706
 anchor_bottom = 0.0055524
 margin_left = 30.0
@@ -90,7 +90,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = ExtResource( 3 )
 text = "Greetings Captain!
+
 My name is Bobby Smartace and I am the Governor-General of Wyoming.
+
 It’s time to serve your country well!
 "
 __meta__ = {
