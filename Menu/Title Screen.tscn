@@ -16,9 +16,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -50.0
+
 [node name="TextureRect" type="TextureRect" parent="."]
+anchor_top = -0.00123441
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.998766
 texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -60,7 +65,6 @@ alignment = 1
 margin_top = 216.0
 margin_bottom = 336.0
 rect_min_size = Vector2( 360, 120 )
-size_flags_horizontal = 1
 size_flags_vertical = 4
 
 [node name="CreditsButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 2 )]
@@ -75,10 +79,6 @@ margin_bottom = 584.0
 rect_min_size = Vector2( 360, 120 )
 size_flags_horizontal = 1
 size_flags_vertical = 4
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
-volume_db = -50.0
 [connection signal="pressed" from="Menu/CenterRow/Buttons/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="Menu/CenterRow/Buttons/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="Menu/CenterRow/Buttons/ExitButton" to="." method="_on_ExitButton_pressed"]
