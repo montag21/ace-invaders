@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Menu/fonts/montserrat_48.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Menu/fonts/montserrat_24.tres" type="DynamicFont" id=2]
@@ -11,6 +11,10 @@
 [ext_resource path="res://Menu/Members/OleksiiRow.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Menu/Background.jpg" type="Texture" id=10]
 [ext_resource path="res://Menu/Members/IlliaRow.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Menu/Members/OleksiiBekhRow.tscn" type="PackedScene" id=12]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.392157 )
 
 [node name="Credits" type="Control"]
 anchor_right = 1.0
@@ -41,53 +45,86 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 659.0
-margin_top = 55.0
-margin_right = 1259.0
-margin_bottom = 1024.0
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 129.0
+margin_top = 209.0
+margin_right = 1789.0
+margin_bottom = 870.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer2"]
+margin_right = 1660.0
+margin_bottom = 100.0
+custom_fonts/font = ExtResource( 1 )
+text = "Credits"
+align = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer2"]
+margin_top = 104.0
+margin_right = 1660.0
+margin_bottom = 596.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer2/PanelContainer"]
+margin_right = 1660.0
+margin_bottom = 492.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer2/PanelContainer/HBoxContainer"]
+margin_right = 828.0
+margin_bottom = 492.0
 rect_min_size = Vector2( 600, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 600.0
-margin_bottom = 60.0
-custom_fonts/font = ExtResource( 1 )
-text = "Credits"
-align = 1
+[node name="OlegBoikoRow" parent="CenterContainer/VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
+margin_top = 0.0
+margin_right = 828.0
+margin_bottom = 120.0
 
-[node name="OlegBoikoRow" parent="CenterContainer/VBoxContainer" instance=ExtResource( 6 )]
+[node name="AndrikRow" parent="CenterContainer/VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
+margin_top = 124.0
+margin_right = 828.0
+margin_bottom = 244.0
 
-[node name="AndrikRow" parent="CenterContainer/VBoxContainer" instance=ExtResource( 4 )]
-margin_top = 188.0
-margin_bottom = 308.0
+[node name="AntonRow" parent="CenterContainer/VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
+margin_top = 248.0
+margin_right = 828.0
+margin_bottom = 368.0
 
-[node name="AntonRow" parent="CenterContainer/VBoxContainer" instance=ExtResource( 5 )]
-margin_top = 312.0
-margin_bottom = 432.0
+[node name="OleksiiBekhRow" parent="CenterContainer/VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 12 )]
+margin_top = 372.0
+margin_right = 828.0
+margin_bottom = 492.0
 
-[node name="YakivRow" parent="CenterContainer/VBoxContainer" instance=ExtResource( 8 )]
-margin_top = 436.0
-margin_bottom = 556.0
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/VBoxContainer2/PanelContainer/HBoxContainer"]
+margin_left = 832.0
+margin_right = 1660.0
+margin_bottom = 492.0
 
-[node name="IvanRow" parent="CenterContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 560.0
-margin_bottom = 680.0
+[node name="OleksiiRow" parent="CenterContainer/VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer2" instance=ExtResource( 9 )]
+margin_top = 0.0
+margin_right = 828.0
+margin_bottom = 120.0
 
-[node name="OleksiiRow" parent="CenterContainer/VBoxContainer" instance=ExtResource( 9 )]
-margin_top = 684.0
-margin_bottom = 804.0
+[node name="IvanRow" parent="CenterContainer/VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer2" instance=ExtResource( 7 )]
+margin_top = 124.0
+margin_right = 828.0
+margin_bottom = 244.0
 
-[node name="YakivRow2" parent="CenterContainer/VBoxContainer" instance=ExtResource( 11 )]
-margin_top = 808.0
-margin_bottom = 928.0
+[node name="YakivRow" parent="CenterContainer/VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer2" instance=ExtResource( 8 )]
+margin_top = 248.0
+margin_right = 828.0
+margin_bottom = 368.0
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 932.0
-margin_right = 600.0
-margin_bottom = 969.0
+[node name="Illia Zeleniuk" parent="CenterContainer/VBoxContainer2/PanelContainer/HBoxContainer/VBoxContainer2" instance=ExtResource( 11 )]
+margin_top = 372.0
+margin_right = 828.0
+margin_bottom = 492.0
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer2"]
+margin_top = 600.0
+margin_right = 1660.0
+margin_bottom = 661.0
 custom_fonts/font = ExtResource( 2 )
 text = "Back"
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer2/Button" to="." method="_on_Button_pressed"]
