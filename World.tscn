@@ -259,11 +259,11 @@ stream = ExtResource( 17 )
 volume_db = -50.0
 
 [node name="Hud" parent="." instance=ExtResource( 15 )]
-margin_left = 1660.15
-margin_top = 17.1181
-margin_right = 1660.15
-margin_bottom = 17.1181
-rect_rotation = -0.139601
+margin_left = 1702.79
+margin_top = 40.3744
+margin_right = 1702.79
+margin_bottom = 40.3744
+rect_rotation = -0.200677
 rect_scale = Vector2( 2.02521, 1.9678 )
 [connection signal="pressed" from="Controls/ExitGame" to="." method="_on_ExitGame_pressed"]
 [connection signal="pressed" from="Controls/Restart" to="." method="_on_Restart_pressed"]
