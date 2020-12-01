@@ -9,7 +9,7 @@ const orbit_speed = 200
 const initial_velocity = Vector2(1.0, 0.75) * orbit_speed * 4
 var exhaust_on = false
 
-var spawn_count = 3
+var spawn_count = 7
 var state = State.Entry setget set_state
 
 var velocity
@@ -20,7 +20,7 @@ func _ready():
 	GameManager.connect("game_phase_changed", self, "_on_game_phase_changed")
 	add_to_group("SHIPS")
 	connect("body_entered", self, "_on_body_entered")
-	$ProjectileTracker.connect("area_entered", self, "_on_projectile_hit")
+	$CollisionTracker.connect("area_entered", self, "_on_projectile_hit")
 	set_state(State.Entry)
 
 func _on_screen_exited():

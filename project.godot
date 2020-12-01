@@ -82,6 +82,7 @@ player_input={
 2d_render/layer_5="projectiles"
 2d_physics/layer_5="projectiles"
 2d_physics/layer_6="rockets"
+2d_physics/layer_7="cliffs"
 
 [rendering]
 
