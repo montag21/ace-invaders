@@ -14,11 +14,8 @@
 [ext_resource path="res://Menu/fonts/montserrat_48.tres" type="DynamicFont" id=12]
 [ext_resource path="res://Menu/fonts/montserrat_24.tres" type="DynamicFont" id=13]
 [ext_resource path="res://Cliff/Cliff.tscn" type="PackedScene" id=14]
-<<<<<<< Updated upstream
 [ext_resource path="res://Music/main-theme.ogg" type="AudioStream" id=17]
-=======
 [ext_resource path="res://UI/Hud/Hud.tscn" type="PackedScene" id=15]
->>>>>>> Stashed changes
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
@@ -118,6 +115,14 @@ margin_right = 158.0
 margin_bottom = 1078.0
 text = "Castle penetrations:"
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UnclickableArea" type="Control" parent="."]
+margin_top = 1040.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
