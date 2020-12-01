@@ -45,7 +45,7 @@ func set_state(_state):
 func start_entry(_start_position, _orbit_height):
 	position = _start_position
 	orbit_height = _orbit_height
-	velocity = Vector2(1, 0.75) * orbit_speed * 3
+	velocity = Vector2(1, 0.6) * orbit_speed * 4
 
 func _process(delta):
 	match state:
@@ -53,7 +53,7 @@ func _process(delta):
 			position += velocity * delta
 			var orbit_delta = max(abs(orbit_height - position.y), 1)
 			velocity = velocity.linear_interpolate(Vector2.RIGHT * orbit_speed,  1/orbit_delta)
-			if orbit_delta == 1:
+			if abs(orbit_delta) <= 1:
 				set_state(State.Orbit)
 		State.Orbit:
 			position += Vector2.RIGHT * orbit_speed * delta

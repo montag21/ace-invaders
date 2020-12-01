@@ -26,7 +26,6 @@ fixed_fps = 15
 process_material = ExtResource( 3 )
 
 [node name="Body" type="Sprite" parent="."]
-modulate = Color( 0.0392157, 0.623529, 0.701961, 1 )
 rotation = 1.5708
 texture = ExtResource( 1 )
 
