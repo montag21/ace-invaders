@@ -1,38 +1,65 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://UI/Hud/Hud.gd" type="Script" id=1]
+[ext_resource path="res://Menu/fonts/score.tres" type="DynamicFont" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 12.0
+content_margin_right = 8.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color( 0.6, 0.6, 0.6, 0.392157 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="Hud" type="Control"]
+anchor_top = -0.00269171
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.997308
+margin_left = -10.6592
+margin_right = -10.6592
 rect_scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GridContainer" type="GridContainer" parent="."]
-margin_right = 74.0
-margin_bottom = 32.0
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_left = -0.484497
+margin_top = -0.484497
+margin_right = 73.5155
+margin_bottom = 49.5155
+rect_scale = Vector2( 0.99613, 1.00737 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Round" type="Label" parent="GridContainer"]
-margin_right = 60.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 0, 0.815686, 0.262745, 1 )
-text = "Round: 1 "
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+margin_left = 12.0
+margin_top = 8.0
+margin_right = 79.0
+margin_bottom = 50.0
 
-[node name="Score" type="Label" parent="GridContainer"]
-margin_top = 18.0
-margin_right = 60.0
-margin_bottom = 32.0
-custom_colors/font_color = Color( 0, 0.815686, 0.262745, 1 )
+[node name="Score" type="Label" parent="PanelContainer/VBoxContainer"]
+margin_right = 67.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.509804, 0.517647, 1, 1 )
 text = "Score: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Round" type="Label" parent="PanelContainer/VBoxContainer"]
+margin_top = 23.0
+margin_right = 67.0
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.52549, 0.552941, 1, 1 )
+text = "Round: 1 "
 __meta__ = {
 "_edit_use_anchors_": false
 }
