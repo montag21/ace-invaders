@@ -11,8 +11,8 @@ var velocity = Vector2.ZERO
 
 func _ready():
 	add_to_group("BULLETS")
-	connect("body_entered", self, "_on_hit")
 	$VisibilityNotifier2D.connect("screen_exited", self, "_on_screen_exited")
+	connect("area_entered", self, "_on_target_hit")
 
 func start(_target):
 	$AudioStreamPlayer2D.play()
@@ -20,11 +20,10 @@ func start(_target):
 	velocity = Vector2(cos(rotation), sin(rotation)) * start_speed
 	
 func _on_screen_exited():
-	die(false)
-	
-func _on_hit(_target):
-	get_node(_target.get_path()).call_deferred("rocket_hit")
-	die()
+	call_deferred("die", false)
+
+func _on_target_hit(_target_area):
+	call_deferred("die")
 	
 func die(explode = true):
 	$Particles2D.hide()

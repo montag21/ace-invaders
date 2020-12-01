@@ -11,18 +11,22 @@ height = 4.25863
 
 [node name="Rocket" type="Area2D"]
 collision_layer = 16
-collision_mask = 5
+collision_mask = 13
 script = ExtResource( 2 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 position = Vector2( -4.76014, 0 )
 rotation = 1.5708
-amount = 32
-lifetime = 0.6
-speed_scale = 0.7
+amount = 64
+lifetime = 0.8
+speed_scale = 2.0
+explosiveness = 0.2
+randomness = 0.2
+fixed_fps = 15
 process_material = ExtResource( 3 )
 
 [node name="Body" type="Sprite" parent="."]
+modulate = Color( 0.0392157, 0.623529, 0.701961, 1 )
 rotation = 1.5708
 texture = ExtResource( 1 )
 

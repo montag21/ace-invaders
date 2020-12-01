@@ -6,9 +6,8 @@ const JUMP_FORCE = 300
 var velocity = Vector2()
 var sprite_size = Vector2(64, 64)
 
-onready var castle_node = get_parent().get_parent().get_node("World/Background/Castle")
 onready var counter_node = get_parent().get_node("Fun/StacheGuyCounter")
-onready var destination = castle_node.position.x
+var destination #set by dropship
 
 func _ready():
 	var sprite = $Sprite
@@ -18,6 +17,7 @@ func _ready():
 	if position.x > destination:
 		sprite.flip_h = true
 	add_to_group("STACHE_GUYS")
+	$ProjectileTracker.connect("area_entered", self, "_on_projectile_hit")
 	
 
 func _physics_process(delta):
@@ -37,8 +37,8 @@ func _physics_process(delta):
 		jump()
 #		
 	velocity = move_and_slide(velocity, Vector2.UP)
-	
-	for body in $Area2D.get_overlapping_bodies():
+
+	for body in $FloorTracker.get_overlapping_bodies():
 		if body.name == "Land":
 			jump()
 
@@ -46,6 +46,6 @@ func jump():
 	if is_on_floor():
 		velocity.y -= JUMP_FORCE
 
-func bullet_hit(position: Vector2, normal: Vector2):
+func _on_projectile_hit(_projectile_area):
 	set_physics_process(false)
 	queue_free()
