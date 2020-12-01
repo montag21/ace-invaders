@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+signal die
+signal penetrate
+
 var speed = 75
 var gravity = 800
 const JUMP_FORCE = 300
@@ -32,6 +35,7 @@ func _physics_process(delta):
 		var previous_value = int(counter_node.get_text())
 		counter_node.set_text(str(previous_value + 1))
 		queue_free()
+		emit_signal("penetrate")
 		
 	if randf() > 0.96:
 		jump()
@@ -49,3 +53,4 @@ func jump():
 func _on_projectile_hit(_projectile_area):
 	set_physics_process(false)
 	queue_free()
+	emit_signal("die")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Pause.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Menu/fonts/montserrat_24.tres" type="DynamicFont" id=13]
 [ext_resource path="res://Cliff/Cliff.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Music/main-theme.ogg" type="AudioStream" id=17]
+[ext_resource path="res://UI/Hud/Hud.tscn" type="PackedScene" id=15]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
@@ -114,6 +115,14 @@ margin_right = 158.0
 margin_bottom = 1078.0
 text = "Castle penetrations:"
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UnclickableArea" type="Control" parent="."]
+margin_top = 1040.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -251,6 +260,18 @@ editor_draw_drag_margin = true
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource( 10 )]
 stream = ExtResource( 17 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -50.0
+
+[node name="Hud" parent="." instance=ExtResource( 15 )]
+margin_left = 1768.68
+margin_top = 26.8082
+margin_right = 1768.68
+margin_bottom = 26.8082
+
+[connection signal="gui_input" from="UnclickableArea" to="." method="_on_Control_gui_input"]
 [connection signal="pressed" from="Controls/ExitGame" to="." method="_on_ExitGame_pressed"]
 [connection signal="pressed" from="Controls/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="PauseLayer/Pause/CenterContainer/PanelContainer/VBoxContainer/ContunueButton" to="PauseLayer/Pause" method="_on_ContunueButton_pressed"]
