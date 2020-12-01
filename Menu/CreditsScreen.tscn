@@ -95,7 +95,14 @@ margin_bottom = 368.0
 margin_top = 372.0
 margin_right = 828.0
 margin_bottom = 492.0
+<<<<<<< HEAD
+<<<<<<< HEAD
 rect_min_size = Vector2( 360, 120 )
+=======
+>>>>>>> dee2290... Add Oleksii to Credits, make them 2 columns
+=======
+rect_min_size = Vector2( 360, 120 )
+>>>>>>> df0d2b3... return intro screens
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/VBoxContainer2/PanelContainer/HBoxContainer"]
 margin_left = 832.0

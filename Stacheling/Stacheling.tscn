@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Stacheling/stacheling.png" type="Texture" id=1]
 [ext_resource path="res://Stacheling/Stacheling.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 24 )
+extents = Vector2( 14.7424, 23.3139 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 24, 24 )
+extents = Vector2( 28.9101, 20.1907 )
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 14.1086
+height = 14.5178
 
 [node name="Stacheling" type="KinematicBody2D"]
 collision_layer = 8
@@ -26,8 +30,17 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="FloorTracker" type="Area2D" parent="."]
+collision_layer = 2148007936
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorTracker"]
 shape = SubResource( 2 )
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+
+[node name="ProjectileTracker" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileTracker"]
+position = Vector2( -1.31267, 1.13161 )
+shape = SubResource( 3 )
+[connection signal="body_entered" from="FloorTracker" to="." method="_on_Area2D_body_entered"]

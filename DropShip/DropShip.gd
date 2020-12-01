@@ -8,7 +8,7 @@ onready var destination = GameManager.stacheling_target.x
 const orbit_speed = 200
 var exhaust_on = false
 
-var spawn_count = 5
+var spawn_count = 3
 var state = State.Entry setget set_state
 
 var velocity
@@ -17,7 +17,8 @@ var orbit_height
 func _ready():
 	GameManager.connect("game_phase_changed", self, "_on_game_phase_changed")
 	add_to_group("SHIPS")
-	connect("body_entered", self, "_on_hit")
+	connect("body_entered", self, "_on_body_entered")
+	$ProjectileTracker.connect("area_entered", self, "_on_projectile_hit")
 	set_state(State.Entry)
 
 func _on_screen_exited():
@@ -77,26 +78,31 @@ func die():
 	$Sprite.hide()
 	remove_from_group("SHIPS")
 	var explosion = EXPLOSION.instance()
-	get_parent().add_child(explosion)
+	get_parent().call_deferred("add_child", explosion)
 	explosion.trigger(position, 1)
 	queue_free()
 
 func _on_game_phase_changed(_current_phase):
 	match _current_phase:
 		GameManager.GamePhase.LandingStart:
-			set_state(State.Land)
+			set_state(State.Land)	
 
-func _on_GroundDetector_body_entered(body):
+func _on_body_entered(body):
 	if body.name == "Land":
-		for n in spawn_count:
-			var instance = STACHE_GUY_REGULAR.instance()
-			instance.position.y = position.y
-			if destination > position.x:
-				instance.position.x = position.x + 30
-			else:
-				instance.position.x = position.x - 30
-			get_parent().add_child(instance)
-			yield(get_tree().create_timer(.5), "timeout")
+		mode = RigidBody2D.MODE_KINEMATIC
+		spawn_stachelings()
 
-func rocket_hit():
+func _on_projectile_hit(_projectile_area):
 	die()
+
+func spawn_stachelings():
+	for n in spawn_count:
+		var instance = STACHE_GUY_REGULAR.instance()
+		instance.destination = destination
+		instance.position.y = position.y
+		if destination > position.x:
+			instance.position.x = position.x + 30
+		else:
+			instance.position.x = position.x - 30
+		get_parent().add_child(instance)
+		yield(get_tree().create_timer(.5), "timeout")

@@ -10,12 +10,30 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 
 [node name="Name" parent="." index="1"]
+<<<<<<< HEAD
+<<<<<<< HEAD
 margin_right = 474.0
+=======
+margin_right = 524.0
+>>>>>>> dee2290... Add Oleksii to Credits, make them 2 columns
+=======
+margin_right = 474.0
+>>>>>>> df0d2b3... return intro screens
 rect_min_size = Vector2( 350, 0 )
 text = "Oleg Boiko"
 
 [node name="Role" parent="." index="2"]
+<<<<<<< HEAD
+<<<<<<< HEAD
 margin_left = 478.0
 margin_right = 828.0
+=======
+margin_left = 528.0
+margin_right = 878.0
+>>>>>>> dee2290... Add Oleksii to Credits, make them 2 columns
+=======
+margin_left = 478.0
+margin_right = 828.0
+>>>>>>> df0d2b3... return intro screens
 rect_min_size = Vector2( 350, 0 )
 text = "UX Architect"
