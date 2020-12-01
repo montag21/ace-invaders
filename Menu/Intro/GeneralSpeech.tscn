@@ -132,3 +132,4 @@ custom_fonts/font = ExtResource( 4 )
 text = "Next"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -30.0

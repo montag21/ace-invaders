@@ -17,5 +17,6 @@ Your primary objective is to penetrate the enemy defense as hard as possible and
 
 [node name="AudioStreamPlayer" parent="." index="3"]
 stream = ExtResource( 3 )
+volume_db = -30.0
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]

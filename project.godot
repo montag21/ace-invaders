@@ -21,6 +21,7 @@ run/main_scene="res://Menu/Title Screen.tscn"
 [autoload]
 
 GameManager="*res://GameManager/GameManager.tscn"
+MenuMusic="*res://MusicPLayer.tscn"
 
 [display]
 

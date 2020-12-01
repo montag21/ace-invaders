@@ -2,6 +2,7 @@ extends Node2D
 
 func _ready():
 	GameManager.init_world(self, $Background/Castle.position)
+	MenuMusic.stop()
 	$AudioStreamPlayer.play()
 	
 func _on_Restart_pressed():

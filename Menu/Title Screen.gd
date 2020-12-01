@@ -1,10 +1,9 @@
 extends Control
 
 func _ready():
-	$AudioStreamPlayer.play()
+	MenuMusic.play()
 
 func _on_PlayButton_pressed():
-	$AudioStreamPlayer.stop()
 	get_tree().change_scene("res://Menu/Intro/GeneralSpeechFirst.tscn")
 
 func _on_CreditsButton_pressed():
