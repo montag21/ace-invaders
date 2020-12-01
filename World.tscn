@@ -5,7 +5,6 @@
 [ext_resource path="res://Land.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Castle/Castle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://RocketTurret/RocketTurret.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Restart.gd" type="Script" id=6]
 [ext_resource path="res://level-one.png" type="Texture" id=7]
 [ext_resource path="res://Turret/Turret.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/LaunchLabel/LaunchLabel.tscn" type="PackedScene" id=9]
@@ -14,8 +13,8 @@
 [ext_resource path="res://Menu/fonts/montserrat_48.tres" type="DynamicFont" id=12]
 [ext_resource path="res://Menu/fonts/montserrat_24.tres" type="DynamicFont" id=13]
 [ext_resource path="res://Cliff/Cliff.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Music/main-theme.ogg" type="AudioStream" id=17]
 [ext_resource path="res://UI/Hud/Hud.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Music/main-theme.ogg" type="AudioStream" id=17]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
@@ -97,6 +96,7 @@ MAX_ANGLE = 0.5
 [node name="Fun" type="CanvasLayer" parent="."]
 
 [node name="StacheGuyCounter" type="Label" parent="Fun"]
+visible = false
 margin_left = 152.0
 margin_top = 1056.0
 margin_right = 184.0
@@ -109,20 +109,13 @@ __meta__ = {
 }
 
 [node name="StacheGuyCounter2" type="Label" parent="Fun"]
+visible = false
 margin_left = 16.0
 margin_top = 1056.0
 margin_right = 158.0
 margin_bottom = 1078.0
 text = "Castle penetrations:"
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="UnclickableArea" type="Control" parent="."]
-margin_top = 1040.0
-margin_right = 1920.0
-margin_bottom = 1080.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -145,6 +138,7 @@ to launch a dropship
 (3 left)"
 
 [node name="ExitGame" type="Button" parent="Controls"]
+visible = false
 margin_left = 248.0
 margin_top = 1056.0
 margin_right = 325.0
@@ -155,12 +149,12 @@ __meta__ = {
 }
 
 [node name="Restart" type="Button" parent="Controls"]
+visible = false
 margin_left = 184.0
 margin_top = 1056.0
 margin_right = 241.0
 margin_bottom = 1076.0
 text = "Restart"
-script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -262,7 +256,6 @@ editor_draw_drag_margin = true
 stream = ExtResource( 17 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
 volume_db = -50.0
 
 [node name="Hud" parent="." instance=ExtResource( 15 )]
@@ -270,8 +263,6 @@ margin_left = 1768.68
 margin_top = 26.8082
 margin_right = 1768.68
 margin_bottom = 26.8082
-
-[connection signal="gui_input" from="UnclickableArea" to="." method="_on_Control_gui_input"]
 [connection signal="pressed" from="Controls/ExitGame" to="." method="_on_ExitGame_pressed"]
 [connection signal="pressed" from="Controls/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="PauseLayer/Pause/CenterContainer/PanelContainer/VBoxContainer/ContunueButton" to="PauseLayer/Pause" method="_on_ContunueButton_pressed"]

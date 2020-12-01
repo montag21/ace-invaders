@@ -10,3 +10,6 @@ margin_bottom = -1064.0
 text = "Press [SPACE] to launch Dropship (3 left)"
 align = 1
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
