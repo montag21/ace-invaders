@@ -3,17 +3,18 @@
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Pause.gd" type="Script" id=2]
 [ext_resource path="res://Land.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Castle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Castle/Castle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://RocketTurret/RocketTurret.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Restart.gd" type="Script" id=6]
 [ext_resource path="res://level-one.png" type="Texture" id=7]
 [ext_resource path="res://Turret/Turret.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/LaunchLabel/LaunchLabel.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Music/main-theme.ogg" type="AudioStream" id=10]
+[ext_resource path="res://MusicPLayer.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Menu/Buttons/Styles/new_styleboxflat.tres" type="StyleBox" id=11]
 [ext_resource path="res://Menu/fonts/montserrat_48.tres" type="DynamicFont" id=12]
 [ext_resource path="res://Menu/fonts/montserrat_24.tres" type="DynamicFont" id=13]
 [ext_resource path="res://Cliff/Cliff.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Music/main-theme.ogg" type="AudioStream" id=17]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
@@ -117,23 +118,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="UnclickableArea" type="Control" parent="."]
-margin_top = 1040.0
-margin_right = 1920.0
-margin_bottom = 1080.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Controls" type="CanvasLayer" parent="."]
 
 [node name="LaunchLabel" parent="Controls" instance=ExtResource( 9 )]
-anchor_top = 0.000826829
-anchor_bottom = 1.00823
-margin_left = 691.042
-margin_top = 505.596
-margin_right = -1064.96
-margin_bottom = -534.404
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -248.0
+margin_top = -68.0
+margin_right = -84.002
+margin_bottom = -20.0
 rect_scale = Vector2( 3, 3 )
 custom_colors/font_color = Color( 0.00392157, 0.815686, 0.94902, 1 )
 text = "Press [SPACE]
@@ -254,10 +249,8 @@ current = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
-volume_db = -50.0
-[connection signal="gui_input" from="UnclickableArea" to="." method="_on_Control_gui_input"]
+[node name="AudioStreamPlayer" parent="." instance=ExtResource( 10 )]
+stream = ExtResource( 17 )
 [connection signal="pressed" from="Controls/ExitGame" to="." method="_on_ExitGame_pressed"]
 [connection signal="pressed" from="Controls/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="PauseLayer/Pause/CenterContainer/PanelContainer/VBoxContainer/ContunueButton" to="PauseLayer/Pause" method="_on_ContunueButton_pressed"]
