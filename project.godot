@@ -22,6 +22,7 @@ run/main_scene="res://Menu/Title Screen.tscn"
 
 GameManager="*res://GameManager/GameManager.tscn"
 ScoreManager="*res://ScoreManager/ScoreManager.tscn"
+MenuMusic="*res://MusicPLayer.tscn"
 
 [display]
 
