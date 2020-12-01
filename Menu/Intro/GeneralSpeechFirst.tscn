@@ -8,6 +8,11 @@
 rect_pivot_offset = Vector2( 1311.37, -269.632 )
 script = ExtResource( 3 )
 
+[node name="General" parent="." index="1"]
+margin_top = -813.0
+margin_right = 800.0
+margin_bottom = 0.0
+
 [node name="AudioStreamPlayer" parent="." index="3"]
 stream = ExtResource( 2 )
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]

@@ -7,6 +7,11 @@
 [node name="Control" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="General" parent="." index="1"]
+margin_top = -813.0
+margin_right = 800.0
+margin_bottom = 0.0
+
 [node name="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/Panel" index="0"]
 anchor_left = -0.00341157
 anchor_right = -0.00341157
@@ -17,6 +22,5 @@ Your primary objective is to penetrate the enemy defense as hard as possible and
 
 [node name="AudioStreamPlayer" parent="." index="3"]
 stream = ExtResource( 3 )
-volume_db = -30.0
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
