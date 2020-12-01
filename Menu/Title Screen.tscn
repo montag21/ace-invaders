@@ -79,6 +79,7 @@ margin_bottom = 584.0
 rect_min_size = Vector2( 360, 120 )
 size_flags_horizontal = 1
 size_flags_vertical = 4
+
 [connection signal="pressed" from="Menu/CenterRow/Buttons/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="Menu/CenterRow/Buttons/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="Menu/CenterRow/Buttons/ExitButton" to="." method="_on_ExitButton_pressed"]
