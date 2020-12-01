@@ -3,10 +3,12 @@ extends Node
 const DROPSHIP_POOL_SIZE = 3
 const DROPSHIP_PASSENGERS = 7
 const STACHELING_EXIT_COOLDOWN = 0.5
+const CASTLE_MAX_HP = 21
 
 enum GamePhase { Launch, LandingPrep, LandingStart, Win, Loss }
 signal game_phase_changed
 signal game_round_changed
+signal castle_hp_changed
 
 const DROP_SHIP = preload("res://DropShip/DropShip.tscn")
 const STACHE_GUY_REGULAR = preload("res://Stacheling/Stacheling.tscn")
@@ -17,9 +19,11 @@ var stacheling_destination
 var world
 var game_state
 var game_round
+var castle_hp
 
 func _ready():
 	game_round = 1
+	castle_hp = CASTLE_MAX_HP
 	reset()
 	
 func init_dropship_pool():
@@ -90,6 +94,10 @@ func _on_stacheling_penetrated(backyard):
 		ScoreManager.track_backyard_penetration()
 	else:
 		ScoreManager.track_penetration()
+	castle_hp -= 1
+	emit_signal("castle_hp_changed", castle_hp)
+	if castle_hp <= 0:
+		get_tree().change_scene("res://Menu/GameOverScreen.tscn")
 	verify_game_state()
 	
 func _on_dropship_die(crash):
