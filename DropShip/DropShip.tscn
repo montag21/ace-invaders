@@ -70,7 +70,7 @@ volume_db = -35.0
 
 [node name="ProjectileTracker" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 20
+collision_mask = 36
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ProjectileTracker"]
 polygon = PoolVector2Array( -1.01257, -43.0293, 4.57626, -40.7589, 8, -35.7, 19.247, -21.4599, 28.1542, 8.14346, 37.1487, 26.8311, 34, 42, -34, 42, -37.1654, 28.7523, -27.8215, 4.47578, -19.5256, -23.0318, -9, -34.9, -5.64083, -40.4096 )

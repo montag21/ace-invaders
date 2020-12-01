@@ -6,6 +6,7 @@ const EXPLOSION = preload("res://Explosion/Explosion.tscn")
 const STACHE_GUY_REGULAR = preload("res://Stacheling/Stacheling.tscn")
 onready var destination = GameManager.stacheling_target.x
 const orbit_speed = 200
+const initial_velocity = Vector2(1.0, 0.75) * orbit_speed * 4
 var exhaust_on = false
 
 var spawn_count = 3
@@ -13,6 +14,7 @@ var state = State.Entry setget set_state
 
 var velocity
 var orbit_height
+var descent
 
 func _ready():
 	GameManager.connect("game_phase_changed", self, "_on_game_phase_changed")
@@ -45,15 +47,16 @@ func set_state(_state):
 func start_entry(_start_position, _orbit_height):
 	position = _start_position
 	orbit_height = _orbit_height
-	velocity = Vector2(1, 0.6) * orbit_speed * 4
+	velocity = initial_velocity
+	descent = abs(orbit_height - _start_position.y)
 
 func _process(delta):
 	match state:
 		State.Entry:
 			position += velocity * delta
-			var orbit_delta = max(abs(orbit_height - position.y), 1)
-			velocity = velocity.linear_interpolate(Vector2.RIGHT * orbit_speed,  1/orbit_delta)
-			if abs(orbit_delta) <= 1:
+			var orbit_delta = (position.y - orbit_height + descent)/descent
+			velocity = initial_velocity.linear_interpolate(Vector2.RIGHT * orbit_speed,  orbit_delta)
+			if position.y >= orbit_height - 1:
 				set_state(State.Orbit)
 		State.Orbit:
 			position += Vector2.RIGHT * orbit_speed * delta

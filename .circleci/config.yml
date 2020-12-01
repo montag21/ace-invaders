@@ -5,12 +5,17 @@ jobs:
     docker:
       - image: debian:latest
     steps:
-      - checkout
       - run:
           name: Install dependencies
           command: |
             apt-get update
-            apt-get -y install wget zip unzip
+            apt-get -y install curl wget zip unzip
+      - run:
+          name: Install git LFS
+          command: |
+            curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
+            apt-get install git-lfs -y
+      - checkout
       - run:
           name: Download Godot 3.2.3
           command: |

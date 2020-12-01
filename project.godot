@@ -81,6 +81,7 @@ player_input={
 2d_physics/layer_4="units"
 2d_render/layer_5="projectiles"
 2d_physics/layer_5="projectiles"
+2d_physics/layer_6="rockets"
 
 [rendering]
 

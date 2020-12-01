@@ -4,13 +4,13 @@ enum State {SCAN, ATTACK}
 enum Direction { Left, Right }
 
 const BULLET = preload("res://Turret/Bullet/Bullet.tscn")
-const ROTATION_SPEED = 1
+const ROTATION_SPEED = 0.7
 const ATTACK_ROTATION_BOOST = 5
 export(Direction) var DIRECTION = Direction.Left setget set_direction
 export var MIN_ANGLE: float = -0.25
 export var MAX_ANGLE: float = 1
 const RANGE = 200
-export var recharge_rate = 0.75
+export var recharge_rate = 0.5
 const TARGET_MASK = 0b00000000000000001000
 var rotation_direction = 1
 
@@ -48,7 +48,9 @@ func update_scan_direction():
 		rotation_direction = 1
 
 func update_scan_position(delta):
-	turret_head.rotate(rotation_direction * ROTATION_SPEED * delta)
+	var distance_to_edge = 2 * min(turret_head.rotation - MIN_ANGLE, MAX_ANGLE - turret_head.rotation)/abs(MAX_ANGLE - MIN_ANGLE)
+	var rotation_speed = lerp(ROTATION_SPEED/3, ROTATION_SPEED, distance_to_edge)
+	turret_head.rotate(rotation_direction * rotation_speed * rand_range(1.0, 1.5) * delta)
 	update_scan_direction()
 	raycast()
 
